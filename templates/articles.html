@@ -6,7 +6,7 @@
     
         <div class="col-md-10 offset-md-3">
             <div class="col-lg-8">
-                <h3>Articles</h3>
+                <h3>Updates</h3>
                 <hr>
                 </div>
         </div>
@@ -16,8 +16,8 @@
         <div class="col-lg-8">
             <form>
                  {% csrf_token %} 
-                <input type="text" name = "keyword" class="input-sm" maxlength="64" placeholder="Ara...">
-              <button type="submit" class="btn btn-danger">See</button>
+                <input type="text" name = "keyword" class="input-sm" maxlength="64" placeholder="Post...">
+              <button type="submit" class="btn btn-danger">Search</button>
             </form>
       </div>
     </div>
@@ -35,21 +35,20 @@
     <div class="col-lg-8">
 
       <!-- Title -->
-      <a href="{% url 'article:detail' article.id %}"><h2 class="mt-4">{{article.title}}</h2></a> 
+      <a href="{% url 'article:detail' article.id %}" style="text-transform: uppercase;"><h2 class="mt-4">{{article.title}}</h2></a> 
         
       <!-- Author -->
       <p class="lead">
         
-        Published by {{article.author.username}}
+        Posted by {{article.author.username}}
       </p>
 
-      <hr>
-
+  
       <!-- Date/Time -->
-      <p>{{article.created_date}}</p>
-      <hr>
+      <p><small>{{article.created_date}}</small></p>
       <!-- Preview Image -->
       {% if article.article_image %}
+      <hr>
       <a href="{% url 'article:detail' article.id %}"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt=""></a>
       {% endif %}
      
